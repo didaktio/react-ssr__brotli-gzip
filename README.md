@@ -6,7 +6,7 @@ A [Simple React Clock](https://github.com/didaktio/react-clock), utilising:
 * [gzip](https://en.wikipedia.org/wiki/Gzip) Compression
 * Customised [Webpack](https://webpack.js.org/configuration/)
 * [TypeScript](https://create-react-app.dev/docs/adding-typescript/) EVERYWHERE
-* [Environment Variables](https://create-react-app.dev/docs/adding-custom-environment-variables/) ([done properly](https://stackoverflow.com/questions/55185601/webpack-process-env-undefined-using-defineplugin-and-dotenv/65264701#65264701)).
+* [Environment Variables](https://create-react-app.dev/docs/adding-custom-environment-variables/) ([done properly](https://stackoverflow.com/questions/55185601/webpack-process-env-undefined-using-defineplugin-and-dotenv/65264701#65264701))
 * [SCSS](https://sass-lang.com/) (Dart SASS)
 * [Hooks](https://reactjs.org/docs/hooks-intro.html)
 * ['State Lifting'](https://reactjs.org/docs/lifting-state-up.html)
@@ -24,7 +24,7 @@ A [Simple React Clock](https://github.com/didaktio/react-clock), utilising:
 
 You might compare the performance of this deployment with the [non-SSR](https://react-clock.didakt.io) or [non-compression]((https://react-clock-ssr.herokuapp.com)) deployment (using eg [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse), [WebPageTest](https://www.webpagetest.org), or just by inspecting the source files in Chrome DevTools). For the last: navigate to the Network tab in the dev tools, ensure `Disable cache` is checked, and reload the page. Now compare the size of `bundle.js` and `main.css` with that of the [non-SSR](https://react-clock-ssr.herokuapp.com) or [uncompressed SSR](https://react-clock-ssr.herokuapp.com) version, again with cache disabled.
 
-**LIVE**: https://react-clock-ssr-brotgi.herokuapp.com\
+**LIVE**: https://react-clock-ssr-brotgi.herokuapp.com \
 Uncached: https://react-clock-ssr-brotgi.herokuapp.com/?noCache=true
 
 
@@ -46,7 +46,7 @@ Uncached: https://react-clock-ssr-brotgi.herokuapp.com/?noCache=true
         * Set the entry point to the app entry file (`index.tsx`).
         * Name the output file as `bundle.js`.
     - `mode` is set to 'production' to ensure an build stripped of all but the necessary.
-    - Optionally, Webpack will watch for changes if the WATCH environment variable is present.
+    - Optionally, Webpack will watch for changes if the `WATCH` environment variable is present.
 4. Running `npm start` does the following:
     1. Copies everything from `public` directory to the `server-build` directory.
     2. Copies `server-index.html` to `server-build` and renames it to `index.html`.
@@ -55,7 +55,7 @@ Uncached: https://react-clock-ssr-brotgi.herokuapp.com/?noCache=true
     5. Moves into the `server-build` directory and runs [nodemon](https://www.npmjs.com/package/nodemon) to start a hot reload server.
     6. Source files are watched by webpack for changes; any change will trigger a recompile. Nodemon restarts the server on any changes to `index.js`, a file which webpack will overwrite on every compile. Reloading the page will load the new changes.
 
-Compressed files are served depending on the headers included in the request. Most browsers support brotli, gzip,
+Compressed files are served depending on the headers included in the request. Most browsers support both brotli and gzip and will therefore send the necessary headers.
 
 
 #### React Scripts
