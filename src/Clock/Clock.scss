@@ -1,0 +1,104 @@
+.clock-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Clock {
+    .Clock__image {
+        height: 250px;
+        width: 250px;
+        will-change: transform;
+        cursor: pointer;
+
+        @media (prefers-reduced-motion: no-preference) {
+            &.Clock__image--animation {
+                @keyframes App-logo-spin {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                animation-name: App-logo-spin;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+
+                &.Clock__image--play {
+                    animation-play-state: running;
+                }
+
+                &.Clock__image--pause {
+                    animation-play-state: paused;
+                }
+
+                &.Clock__image--1x {
+                    animation-duration: 20s;
+                }
+
+                &.Clock__image--2x {
+                    animation-duration: 10s;
+                }
+
+                &.Clock__image--4x {
+                    animation-duration: 5s;
+                }
+
+                &.Clock__image--10x {
+                    animation-duration: 2s;
+                }
+
+                &.Clock__image--100x{
+                    animation-duration: 200ms;
+                }
+            }
+        }
+    }
+
+    .Buttons {
+        display: flex;
+        justify-content: center;
+
+        button {
+            outline: none;
+            background: none;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+
+            &.Buttons__button--disabled {
+                cursor: unset;
+
+                &:hover {
+                    transform: unset;
+                }
+            }
+        }
+    }
+
+    @mixin popover-base {
+        z-index: 1001;
+        position: absolute;
+        opacity: 0.95;
+    }
+
+    .Clock__formats-popover {
+       @include popover-base;
+        right: 27%;
+        top: 49%;
+        width: 200px;
+    }
+
+    .Clock__speeds-popover {
+        @include popover-base;
+        text-align: center;
+    }
+}

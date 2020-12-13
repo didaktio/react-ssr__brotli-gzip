@@ -1,0 +1,64 @@
+{
+  "name": "react-clock-ssr",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass": "^1.30.0"
+  },
+  "scripts": {
+    "serve": "npm run webpack && (cd server-build && node index.js)",
+    "start": "npm run _webpack:watch & (cd server-build && nodemon index.js)",
+    "webpack": "cp public/* server-build && cp server-index.html server-build/index.html && npm run _webpack:client && npm run _webpack:server",
+    "deploy:heroku": "npm run webpack && cd server-build && git commit --allow-empty -am\"update\" && git push",
+    "rs-start": "react-scripts start",
+    "rs-build": "react-scripts build",
+    "_webpack:server": "cross-env TS_NODE_PROJECT=\"webpack-tsconfig.json\" node_modules/.bin/webpack --config webpack.config.ts --env PLATFORM=server",
+    "_webpack:client": "cross-env TS_NODE_PROJECT=\"webpack-tsconfig.json\" node_modules/.bin/webpack --config webpack.config.ts --env PLATFORM=client",
+    "_webpack:watch": "npm run _webpack:server -- --env WATCH=true && npm run _webpack:client -- --env WATCH=true"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/compression-webpack-plugin": "^6.0.1",
+    "@types/express": "^4.17.9",
+    "@types/mini-css-extract-plugin": "^1.2.2",
+    "@types/node": "^14.14.12",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/webpack": "^4.41.25",
+    "@types/webpack-node-externals": "^2.5.0",
+    "compression-webpack-plugin": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^5.0.0-alpha.8",
+    "mini-css-extract-plugin": "^1.3.3",
+    "mini-svg-data-uri": "^1.2.3",
+    "nodemon": "^2.0.6",
+    "sass-loader": "^10.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}

@@ -1,0 +1,3 @@
+[submodule "server-build"]
+	path = server-build
+	url = https://github.com/didaktio/react-ssr__brotli-gzip-DEMO

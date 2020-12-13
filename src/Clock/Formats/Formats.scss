@@ -1,0 +1,25 @@
+.Formats {
+    background-color: slateblue;
+    font-size: 0.6em;
+    color: white;
+    padding: 1px 0;
+    border-radius: 10px;
+    white-space: nowrap;
+
+    .Formats__item {
+        border-radius: 10px;
+        padding: 2px 4px;
+        cursor: pointer;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &:hover {
+            background-color: darkslateblue;
+        }
+
+        .Formats__example {
+            font-weight: bold;
+            padding: 0 4px;
+        }
+    }
+}

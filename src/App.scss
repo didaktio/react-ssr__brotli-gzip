@@ -1,0 +1,6 @@
+// Imported so that webpack includes root styles in final main.css file.
+@import './index.scss';
+
+.App {
+    height: 100%;
+}
